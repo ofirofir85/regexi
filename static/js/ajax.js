@@ -5,7 +5,7 @@ function reset_results(){
 	document.getElementById('result_text').style.visibility = 'hidden'
 }
 
-function check_regex(){
+function check_regex(api_url){
 	reset_results()
 	var pattern = document.getElementById('pattern');
 	var text = document.getElementById('text_area');
@@ -18,8 +18,7 @@ function check_regex(){
 				on_response(this.responseText) 
 			}
 		}
-		var url = "{{url_for('check_regex')}}";
-		xhttp.open('POST', url, true); //init the requests
+		xhttp.open('POST', api_url, true); //init the requests
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); //lets flask read the posted data as submitted form
 		var post_string = 'pattern='+pattern.value+'&text=' + text.value; // post data
 		xhttp.send(post_string); //send the ajax request
@@ -34,3 +33,4 @@ function on_response(response){
 	document.getElementById('result_text').style.visibility = 'visible'
 	document.getElementById('result_text').innerHTML = response['result_html']
 }
+console.log('imported')

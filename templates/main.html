@@ -3,6 +3,9 @@
 		<title>Re(ge)xi</title>
 		<link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.css')}}"/>
 		<link rel="shortcut icon" type="image/x-icon" href="{{url_for('static', filename='img/favicon.ico')}}" />
+		<script type="text/javascript">
+			var api_url = "{{url_for('check_regex')}}";
+		</script>
 		<script type='text/javascript' src="{{url_for('static', filename='js/ajax.js')}}"></script>
 	</head>
 	<body>
@@ -25,7 +28,7 @@
 						<div class='input-group-prepend'>
 							<span class='input-group-text'>Pattern</span>
 						</div>				
-						<input type='text' class='form-control' id='pattern' placeholder="Regex Pattern" onkeyup="check_regex()"/>
+						<input type='text' class='form-control' id='pattern' placeholder="Regex Pattern" onkeyup="check_regex(api_url)"/>
 					</div>
 				</td>
 			</tr>
@@ -35,7 +38,7 @@
 						<div class='input-group-prepend'>
 							<span class='input-group-text'>Test Text</span>
 						</div>
-						<textarea id='text_area' placeholder='Text To Match Pattern Within' class='form-control' rows='3' onkeyup="check_regex()"></textarea>
+						<textarea id='text_area' placeholder='Text To Match Pattern Within' class='form-control' rows='3' onkeyup="check_regex(api_url)"></textarea>
 					</div>
 				</td>
 			</tr>
